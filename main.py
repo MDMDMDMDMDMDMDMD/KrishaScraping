@@ -9,20 +9,21 @@ load_dotenv()
 mongodb_uri = os.getenv("MONGODB_URI")
 cluster = MongoClient(mongodb_uri)
 db = cluster["testdb"]
-collection = db["messages"]
+collection = db["advertisements"]
 
-# url = "https://krisha.kz/arenda/kvartiry/almaty/?das[flat.floor][to]=500000"
-#
-# req = requests.get(url)
-# src = req.text
-# print(src)
-#
+url = "https://krisha.kz/arenda/kvartiry/almaty/?das[flat.floor][to]=500000"
+req = requests.get(url)
+src = req.text
+
+#Если нужно сохранить страницу
+
+#Сохраняет html
 # with open("index.html", "w", encoding="utf-8") as file:
 #     file.write(src)
 
-
-with open("index.html", encoding="utf-8") as file:
-    src = file.read()
+#Считывает html
+# with open("index.html", encoding="utf-8") as file:
+#     src = file.read()
 
 soup = BeautifulSoup(src, "lxml")
 
